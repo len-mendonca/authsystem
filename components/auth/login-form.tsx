@@ -36,8 +36,8 @@ const LoginForm = () => {
     setSuccess("");
     startTransition(async () => {
       const res = await login(values);
-      setError(res.error);
-      setSuccess(res.success);
+      setError(res?.error);
+      setSuccess(res?.success);
     });
   };
   return (
