@@ -14,7 +14,6 @@ const NewVerificationForm = () => {
   const token = searchParams.get("token");
   let v = false;
   const onSubmit = useCallback(async () => {
-    console.log("1111111111111");
     if (!token) {
       setError("Missing token");
       return;
