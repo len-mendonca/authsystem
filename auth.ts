@@ -4,6 +4,7 @@ import { db } from "./lib/db";
 import authConfig from "./auth.config";
 import { getUserById } from "./utils/user";
 import { UserRole } from "@prisma/client";
+import { getTwoFactorTConfirmationByUserId } from "./utils/two-factor-confirmation";
 
 declare module "next-auth" {
   /**
@@ -45,6 +46,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (account?.provider !== "credentials") return true;
       const existingUser = await getUserById(user.id || " ");
       if (!existingUser?.emailVerified) return false;
+
+      if (existingUser.isTwoFactorEnabled) {
+        const getTwoFactorTConfirmation =
+          await getTwoFactorTConfirmationByUserId(existingUser.id);
+        if (!getTwoFactorTConfirmation) return false;
+
+        await db.twoFactorConfirmation.delete({
+          where: { id: getTwoFactorTConfirmation.id },
+        });
+      }
 
       return true;
     },
