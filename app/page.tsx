@@ -10,7 +10,7 @@ export default function Home() {
         <p className="typed-out drop-shadow-md whitespace-normal break-words">
           A simple authentication system.
         </p>
-        <LoginButton>
+        <LoginButton asChild>
           <Button size={"lg"} className="bg-orange-400 hover:bg-orange-900">
             Sign In
           </Button>
