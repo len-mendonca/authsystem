@@ -40,7 +40,6 @@ const SettingsPage = () => {
   const session = useSession();
 
   const { data, status, update } = session;
-  console.log(status);
 
   const user = data?.user;
 

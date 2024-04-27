@@ -1,6 +1,5 @@
 "use server";
 import { db } from "@/lib/db";
-import { error } from "console";
 
 export const getUserByEmail = async (email: string) => {
   try {
@@ -8,7 +7,6 @@ export const getUserByEmail = async (email: string) => {
     if (!user) return null;
     return user;
   } catch (error) {
-    console.error(error);
     throw error;
   }
 };
@@ -20,7 +18,6 @@ export const getUserById = async (id: string | " ") => {
 
     return user;
   } catch (error) {
-    console.error(error);
     throw error;
   }
 };

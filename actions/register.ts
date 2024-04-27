@@ -20,7 +20,6 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     const getExistingUser = await getUserByEmail(email);
 
     if (getExistingUser) {
-      console.log(getExistingUser);
       return { error: "Email already in use!" };
     }
     const hasedPassword = await bcrypt.hash(password, 10);

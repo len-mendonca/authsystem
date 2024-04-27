@@ -12,7 +12,6 @@ export const reset = async (values: z.infer<typeof ResetSchema>) => {
   if (!validateFields.success) return { error: "Invalid email!" };
   const { email } = validateFields.data;
   const existingUser = await getUserByEmail(email);
-  console.log(existingUser);
 
   if (!existingUser) return { error: "Email not found" };
 
@@ -21,7 +20,6 @@ export const reset = async (values: z.infer<typeof ResetSchema>) => {
     resetVerificationToken.email,
     resetVerificationToken.token
   );
-  console.log("SENT");
 
   return { success: "Reset email sent" };
 };
