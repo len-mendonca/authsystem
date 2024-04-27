@@ -27,7 +27,7 @@ import { SettingsSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserRole } from "@prisma/client";
 import { useSession } from "next-auth/react";
-import { useEffect, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { BeatLoader } from "react-spinners";
 import { z } from "zod";
@@ -42,16 +42,7 @@ const SettingsPage = () => {
   const { data, status, update } = session;
   console.log(status);
 
-  if (status === "unauthenticated") {
-    window.location.reload();
-    return (
-      <div>
-        <BeatLoader />
-      </div>
-    );
-  }
   const user = data?.user;
-  console.log(user);
 
   const oAuth = user?.isOAuth;
   const form = useForm<z.infer<typeof SettingsSchema>>({
@@ -83,6 +74,15 @@ const SettingsPage = () => {
         });
     });
   };
+
+  if (status === "unauthenticated") {
+    window.location.reload();
+    return (
+      <div>
+        <BeatLoader />
+      </div>
+    );
+  }
 
   return (
     <Card className="w-[600px] overflow-hidden">
