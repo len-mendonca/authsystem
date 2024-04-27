@@ -4,7 +4,14 @@
 html,
 body,
 :root {
-  height: 100%;
+  box-sizing: border-box;
+  background-color: rgb(241 245 249);
+}
+body {
+  min-height: 100vh;
+}
+.i {
+  min-height: inherit;
 }
 @layer base {
   :root {

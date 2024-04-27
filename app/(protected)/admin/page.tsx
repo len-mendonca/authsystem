@@ -28,8 +28,13 @@ const AdminPage = () => {
     });
   };
   return (
-    <Card className="w-[600px]">
-      <CardHeader>
+    <Card className="w-[600px] overflow-hidden">
+      <CardHeader
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(209,194,21,1) 0%, rgba(255,220,220,1) 22%, rgba(255,255,255,1) 45%)",
+        }}
+      >
         <p className="text-2xl font-semibold text-center">🗝️ Admin </p>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -38,11 +43,21 @@ const AdminPage = () => {
         </RoleGate>
         <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-md">
           <p className="text-sm font-medium">Admin-only API Route</p>
-          <Button onClick={onApiRouteClick}>Click to test</Button>
+          <Button
+            onClick={onApiRouteClick}
+            className="bg-orange-400 hover:bg-orange-800"
+          >
+            Click to test
+          </Button>
         </div>
         <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-md">
           <p className="text-sm font-medium">Admin-only Server Action</p>
-          <Button onClick={onServerClick}>Click to test</Button>
+          <Button
+            onClick={onServerClick}
+            className="bg-orange-400 hover:bg-orange-800"
+          >
+            Click to test
+          </Button>
         </div>
       </CardContent>
     </Card>

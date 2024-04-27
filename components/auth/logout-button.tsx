@@ -9,6 +9,7 @@ interface LogoutButtonProps {
 export const LogoutButton = ({ children }: LogoutButtonProps) => {
   const onClick = async () => {
     await logout();
+    window.location.reload();
   };
 
   return (

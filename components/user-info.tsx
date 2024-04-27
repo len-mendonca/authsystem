@@ -8,8 +8,13 @@ interface UserInfoProps {
 
 export const UserInfo = ({ user, label }: UserInfoProps) => {
   return (
-    <Card>
-      <CardHeader>
+    <Card className="overflow-hidden">
+      <CardHeader
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(209,194,21,1) 0%, rgba(255,220,220,1) 22%, rgba(255,255,255,1) 45%)",
+        }}
+      >
         <p className="text-2xl font-semibold text-center ">{label}</p>
       </CardHeader>
       <CardContent className="space-y-4">
