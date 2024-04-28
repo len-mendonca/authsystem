@@ -12,7 +12,7 @@ const NewVerificationForm = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
-  let v = false;
+
   const onSubmit = useCallback(async () => {
     if (!token) {
       setError("Missing token");
@@ -27,8 +27,7 @@ const NewVerificationForm = () => {
     }
   }, [token]);
   useEffect(() => {
-    v && onSubmit();
-    v = true;
+    onSubmit();
   }, [onSubmit]);
   return (
     <CardWrapper
